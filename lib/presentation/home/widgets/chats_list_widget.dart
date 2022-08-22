@@ -1,4 +1,5 @@
 import 'package:chat_app_riverpod/core/chat_data.dart';
+import 'package:chat_app_riverpod/presentation/chat/chat_screen.dart';
 import "package:flutter/material.dart";
 
 import '../../../core/colors.dart';
@@ -16,7 +17,10 @@ class ChatListWidget extends StatelessWidget {
           shrinkWrap: true,
           itemBuilder: ((context, index) {
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ChatScreen()));
+              },
               child: ListTile(
                 title: Text(
                   info[index]['name'].toString(),

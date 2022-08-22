@@ -53,8 +53,17 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: const Center(
-          child: ChatListWidget(),
+        body: const ChatListWidget(),
+        floatingActionButton: FloatingActionButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              30,
+            ),
+          ),
+          backgroundColor: kMainThemeColor2,
+          elevation: 0,
+          onPressed: () {},
+          child: const Icon(Icons.messenger),
         ),
       ),
     );
