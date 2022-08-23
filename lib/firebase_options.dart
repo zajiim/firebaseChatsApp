@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD8Cy1KO-dYukutN7GpxxPo3Ns5M-1fbAs',
-    appId: '1:951339969373:android:ad5ca3acfc0d94b12ed6b4',
+    appId: '1:951339969373:android:2682da2e7b9066f42ed6b4',
     messagingSenderId: '951339969373',
     projectId: 'messenger-app-c81b1',
     storageBucket: 'messenger-app-c81b1.appspot.com',
@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '951339969373',
     projectId: 'messenger-app-c81b1',
     storageBucket: 'messenger-app-c81b1.appspot.com',
+    androidClientId: '951339969373-kbq0h5h1l93jnkiucup9rkmr2c1hlcp4.apps.googleusercontent.com',
     iosClientId: '951339969373-1a1mrpkljpvf5o83m478e8aqutaham72.apps.googleusercontent.com',
     iosBundleId: 'com.example.chatAppRiverpod',
   );

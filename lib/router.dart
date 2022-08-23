@@ -1,3 +1,4 @@
+import 'package:chat_app_riverpod/presentation/auth/otp_screen.dart';
 import "package:flutter/material.dart";
 import 'package:chat_app_riverpod/presentation/auth/login_screen.dart';
 import 'package:chat_app_riverpod/presentation/common/widgets/error_widget.dart';
@@ -7,6 +8,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case LoginScreen.routeName:
       return MaterialPageRoute(
         builder: (context) => const LoginScreen(),
+      );
+    case OTPScreen.routeName:
+      final verificationId = settings.arguments as String;
+      return MaterialPageRoute(
+        builder: (context) => OTPScreen(
+          verificationId: verificationId,
+        ),
       );
     default:
       return MaterialPageRoute(

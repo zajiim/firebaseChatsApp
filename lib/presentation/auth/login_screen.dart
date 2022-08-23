@@ -1,18 +1,23 @@
+import 'dart:developer';
+
+import 'package:chat_app_riverpod/application/auth/controller/auth_controller.dart';
 import 'package:chat_app_riverpod/core/colors.dart';
 import 'package:chat_app_riverpod/core/constants.dart';
+import 'package:chat_app_riverpod/infrastructure/common/utils.dart';
 import 'package:chat_app_riverpod/presentation/common/widgets/common_button.dart';
 import 'package:country_picker/country_picker.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   static const routeName = '/login-screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   Country? country;
   final phoneNumberController = TextEditingController();
 
@@ -31,6 +36,21 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       },
     );
+  }
+
+  void sendOTP() {
+    String phoneNumber = phoneNumberController.text.trim();
+    if (country != null && phoneNumber.isNotEmpty) {
+      ref.read(authControllerProvider).signInWithPhone(
+            context,
+            '+${country!.phoneCode}$phoneNumber',
+          );
+    } else {
+      showSnackBar(
+        context: context,
+        message: 'Please select a country',
+      );
+    }
   }
 
   @override
@@ -84,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 90,
                 child: CommonButton(
                   text: "Next",
-                  onPressed: () {},
+                  onPressed: sendOTP,
                 ),
               )
             ],

@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:951339969373:android:ad5ca3acfc0d94b12ed6b4",
+        "mobilesdk_app_id": "1:951339969373:android:2682da2e7b9066f42ed6b4",
         "android_client_info": {
-          "package_name": "com.example.chat_app_riverpod"
+          "package_name": "com.messenger.chatapp"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "951339969373-fgjfa1b50tn5at50vksva08i6fq68nh3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.messenger.chatapp",
+            "certificate_hash": "7c708dbe480f2eb1d790c559f32aa410ef711247"
+          }
+        },
         {
           "client_id": "951339969373-apr7kbv1cgjks289jj44h74370956r3c.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +37,13 @@
             {
               "client_id": "951339969373-apr7kbv1cgjks289jj44h74370956r3c.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "951339969373-1a1mrpkljpvf5o83m478e8aqutaham72.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatAppRiverpod"
+              }
             }
           ]
         }

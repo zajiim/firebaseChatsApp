@@ -1,4 +1,4 @@
-package com.example.chat_app_riverpod
+package com.messenger.chatapp
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -3,6 +3,7 @@ import 'package:chat_app_riverpod/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import "package:flutter/material.dart";
 import 'package:chat_app_riverpod/core/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'presentation/home/home_screen.dart';
 import 'presentation/landing/landing_screen.dart';
@@ -12,7 +13,11 @@ main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const ChatApp());
+  runApp(
+    const ProviderScope(
+      child: ChatApp(),
+    ),
+  );
 }
 
 class ChatApp extends StatelessWidget {
