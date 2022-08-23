@@ -1,6 +1,7 @@
 import 'package:chat_app_riverpod/core/colors.dart';
 import 'package:chat_app_riverpod/core/constants.dart';
 import 'package:chat_app_riverpod/presentation/common/widgets/common_button.dart';
+import 'package:country_picker/country_picker.dart';
 import "package:flutter/material.dart";
 
 class LoginScreen extends StatefulWidget {
@@ -12,12 +13,24 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Country? country;
   final phoneNumberController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
     phoneNumberController.dispose();
+  }
+
+  void pickCountry() {
+    showCountryPicker(
+      context: context,
+      onSelect: (Country _country) {
+        setState(() {
+          country = _country;
+        });
+      },
+    );
   }
 
   @override
@@ -32,44 +45,50 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Messenger will need to verify your phone number",
-            ),
-            k10Height,
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                "Pick country",
+        //Experimenting
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Messenger will need to verify your phone number",
               ),
-            ),
-            k5Height,
-            Row(
-              children: [
-                Text('+91'),
-                k10Width,
-                SizedBox(
-                  width: dimension.width * 0.7,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    controller: phoneNumberController,
-                    decoration: const InputDecoration(
-                      hintText: "Enter your phone number",
+              k10Height,
+              TextButton(
+                onPressed: pickCountry,
+                child: const Text(
+                  "Pick country",
+                ),
+              ),
+              k5Height,
+              Row(
+                children: [
+                  if (country != null) Text('+${country!.phoneCode}'),
+                  k10Width,
+                  SizedBox(
+                    width: dimension.width * 0.7,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      controller: phoneNumberController,
+                      decoration: const InputDecoration(
+                        hintText: "Enter your phone number",
+                      ),
                     ),
                   ),
+                ],
+              ),
+              SizedBox(
+                height: dimension.height * 0.6,
+              ),
+              SizedBox(
+                width: 90,
+                child: CommonButton(
+                  text: "Next",
+                  onPressed: () {},
                 ),
-              ],
-            ),
-            SizedBox(
-              height: dimension.height * 0.6,
-            ),
-            SizedBox(
-              width: 90,
-              child: CommonButton(text: "Next", onPressed: () {},),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

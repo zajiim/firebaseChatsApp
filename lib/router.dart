@@ -1,6 +1,6 @@
+import "package:flutter/material.dart";
 import 'package:chat_app_riverpod/presentation/auth/login_screen.dart';
 import 'package:chat_app_riverpod/presentation/common/widgets/error_widget.dart';
-import "package:flutter/material.dart";
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
