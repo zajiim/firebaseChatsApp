@@ -23,4 +23,16 @@ class AuthController {
       phoneNumber,
     );
   }
+
+  void verifyOTP(
+    BuildContext context,
+    String verificationId,
+    String otp,
+  ) {
+    authRepository.verifyOTP(
+      context: context,
+      otp: otp,
+      verificationId: verificationId,
+    );
+  }
 }
