@@ -33,7 +33,9 @@ class ChatApp extends ConsumerWidget {
       title: 'ChatApp',
       theme: ThemeData.dark().copyWith(
           useMaterial3: true,
-          appBarTheme: const AppBarTheme(color: kMainThemeColor2),
+          appBarTheme: const AppBarTheme(
+            color: kMainThemeColor2,
+          ),
           scaffoldBackgroundColor: kMainThemeColor),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: ref.watch(userDataAuthProvider).when(
