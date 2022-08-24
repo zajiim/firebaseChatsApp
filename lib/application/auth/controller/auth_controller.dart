@@ -1,5 +1,5 @@
 import 'package:chat_app_riverpod/infrastructure/auth/auth_repository.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authControllerProvider = Provider((ref) {

@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OTPScreen extends ConsumerWidget {
-  static const String routeName = 'otp-screen';
+  static const String routeName = '/otp-screen';
   final String verificationId;
   const OTPScreen({
     Key? key,
@@ -24,6 +24,7 @@ class OTPScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final dimension = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: kMainThemeColor,
         elevation: 0,

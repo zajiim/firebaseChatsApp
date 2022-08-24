@@ -38,7 +38,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
-  void sendOTP() {
+  void signInWithPhone() {
     String phoneNumber = phoneNumberController.text.trim();
     if (country != null && phoneNumber.isNotEmpty) {
       ref.read(authControllerProvider).signInWithPhone(
@@ -104,7 +104,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 width: 90,
                 child: CommonButton(
                   text: "Next",
-                  onPressed: sendOTP,
+                  onPressed: signInWithPhone,
                 ),
               )
             ],

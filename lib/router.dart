@@ -18,7 +18,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
       );
       case UserInfoScreen.routeName:
-      
       return MaterialPageRoute(
         builder: (context) => const UserInfoScreen()
       );
