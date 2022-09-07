@@ -1,3 +1,4 @@
+import 'package:chat_app_riverpod/presentation/select_contacts/select_contacts_screen.dart';
 import "package:flutter/material.dart";
 
 import '../../core/colors.dart';
@@ -8,8 +9,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double cameraWidth = screenWidth / 24;
+    double defaultTabWidth = (screenWidth - cameraWidth) / 5;
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -18,6 +22,7 @@ class HomeScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
+              color: kWhite,
             ),
           ),
           actions: [
@@ -25,30 +30,49 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.search,
+                color: kWhite,
               ),
             ),
             IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.more_vert,
+                color: kWhite,
               ),
             ),
           ],
-          bottom: const TabBar(
-            indicatorColor: kIndicatorColor,
+          bottom: TabBar(
+            isScrollable: true,
+            indicatorColor: kWhite,
             indicatorWeight: 4,
-            labelColor: kIndicatorColor,
-            labelStyle: TextStyle(fontWeight: FontWeight.bold),
-            unselectedLabelColor: kUnselectedColor,
+            labelColor: kWhite,
+            labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+            unselectedLabelColor: kWhite,
             tabs: [
-              Tab(
-                text: 'CHATS',
+              SizedBox(
+                width: cameraWidth,
+                child: const Icon(
+                  Icons.camera_alt,
+                  color: kWhite,
+                ),
               ),
-              Tab(
-                text: 'STATUS',
+              SizedBox(
+                width: defaultTabWidth,
+                child: const Tab(
+                  text: "CHATS",
+                ),
               ),
-              Tab(
-                text: 'CALLS',
+              SizedBox(
+                width: defaultTabWidth,
+                child: const Tab(
+                  text: "STATUS",
+                ),
+              ),
+              SizedBox(
+                width: defaultTabWidth,
+                child: const Tab(
+                  text: "CALLS",
+                ),
               ),
             ],
           ),
@@ -62,8 +86,13 @@ class HomeScreen extends StatelessWidget {
           ),
           backgroundColor: kMainThemeColor2,
           elevation: 0,
-          onPressed: () {},
-          child: const Icon(Icons.messenger),
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              SelectContactsScreen.routeName,
+            );
+          },
+          child: const Icon(Icons.comment),
         ),
       ),
     );

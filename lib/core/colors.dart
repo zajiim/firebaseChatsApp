@@ -1,11 +1,13 @@
 import "package:flutter/material.dart";
 
-const kMainThemeColor2 = Color.fromARGB(255, 27, 29, 77);
-const kMainThemeColor = Color.fromARGB(255, 31, 39, 53);
-const kIndicatorColor = Color.fromARGB(255, 129, 143, 175);
-const kUnselectedColor = Colors.white;
+const kMainThemeColor2 = Color(0xff20836d);
+const kMainThemeColor = Color.fromARGB(255, 34, 190, 112);
+const kIndicatorColor = Color.fromARGB(255, 24, 80, 211);
+const kUnselectedColor = Color.fromARGB(255, 0, 0, 0);
 const kGreyColor = Colors.grey;
 const kBlueColor = Colors.blueGrey;
 const dividerColor = Color.fromRGBO(37, 45, 50, 1);
 const chatBarMessage = Color.fromRGBO(30, 36, 40, 1);
-const kButtonColor = Color.fromARGB(255, 4, 55, 143);
+const kButtonColor = Color(0xff075E54);
+const kMermaidBlue = Color.fromARGB(255, 115, 161, 221);
+const kWhite = Colors.white;

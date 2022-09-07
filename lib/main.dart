@@ -31,12 +31,13 @@ class ChatApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ChatApp',
-      theme: ThemeData.dark().copyWith(
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            color: kMainThemeColor2,
-          ),
-          scaffoldBackgroundColor: kMainThemeColor),
+      theme: ThemeData.light().copyWith(
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          color: kMainThemeColor2,
+        ),
+        scaffoldBackgroundColor: kWhite,
+      ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: ref.watch(userDataAuthProvider).when(
           data: (user) {

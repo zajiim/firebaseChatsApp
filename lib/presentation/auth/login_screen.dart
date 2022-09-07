@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:chat_app_riverpod/application/auth/controller/auth_controller.dart';
 import 'package:chat_app_riverpod/core/colors.dart';
@@ -30,9 +30,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void pickCountry() {
     showCountryPicker(
       context: context,
-      onSelect: (Country _country) {
+      onSelect: (Country selectedCountry) {
         setState(() {
-          country = _country;
+          country = selectedCountry;
         });
       },
     );

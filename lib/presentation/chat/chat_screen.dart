@@ -4,6 +4,7 @@ import 'package:chat_app_riverpod/presentation/chat/widgets/chat_messages_list.d
 import "package:flutter/material.dart";
 
 class ChatScreen extends StatelessWidget {
+  static const String routeName = '/mobile-chat-screen';
   const ChatScreen({Key? key}) : super(key: key);
 
   @override

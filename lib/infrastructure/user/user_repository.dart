@@ -5,7 +5,7 @@ import 'package:chat_app_riverpod/infrastructure/common/repositories/common_fire
 import 'package:chat_app_riverpod/infrastructure/common/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,7 +62,7 @@ class UserRepository {
         name: name,
         uid: uid,
         profilePic: photoUrl,
-        phoneNumber: auth.currentUser!.uid,
+        phoneNumber: auth.currentUser!.phoneNumber.toString(),
         isOnline: true,
         groupId: [],
       );

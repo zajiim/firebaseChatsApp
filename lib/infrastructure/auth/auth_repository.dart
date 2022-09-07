@@ -1,6 +1,6 @@
 import 'package:chat_app_riverpod/presentation/auth/otp_screen.dart';
 import 'package:chat_app_riverpod/presentation/user/user_info_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,17 +10,17 @@ import '../common/utils.dart';
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
     auth: FirebaseAuth.instance,
-    firestore: FirebaseFirestore.instance,
+    // firestore: FirebaseFirestore.instance,
   ),
 );
 
 class AuthRepository {
   final FirebaseAuth auth;
-  final FirebaseFirestore firestore;
+  // final FirebaseFirestore firestore;
 
   AuthRepository({
     required this.auth,
-    required this.firestore,
+    // required this.firestore,
   });
   void signInWithPhone(BuildContext context, String phoneNumber) async {
     try {
@@ -59,7 +59,7 @@ class AuthRepository {
         verificationId: verificationId,
         smsCode: otp,
       );
-      await auth.signInWithCredential(credential);
+      auth.signInWithCredential(credential);
       Navigator.pushNamedAndRemoveUntil(
         context,
         UserInfoScreen.routeName,
