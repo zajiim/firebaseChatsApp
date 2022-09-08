@@ -39,4 +39,8 @@ class UserController {
       context: context,
     );
   }
+
+  Stream<UserModel> userDataById(String userId) {
+    return userRepository.userData(userId);
+  }
 }

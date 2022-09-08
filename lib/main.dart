@@ -32,7 +32,7 @@ class ChatApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'ChatApp',
       theme: ThemeData.light().copyWith(
-        useMaterial3: true,
+        // useMaterial3: true,
         appBarTheme: const AppBarTheme(
           color: kMainThemeColor2,
         ),

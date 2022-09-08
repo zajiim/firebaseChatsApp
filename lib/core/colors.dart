@@ -11,3 +11,4 @@ const chatBarMessage = Color.fromRGBO(30, 36, 40, 1);
 const kButtonColor = Color(0xff075E54);
 const kMermaidBlue = Color.fromARGB(255, 115, 161, 221);
 const kWhite = Colors.white;
+const myMessageColor = Color(0xffd9fdd3);

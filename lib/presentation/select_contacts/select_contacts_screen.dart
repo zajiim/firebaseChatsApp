@@ -13,6 +13,7 @@ class SelectContactsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text(
           'Select contact',
         ),
@@ -46,13 +47,20 @@ class SelectContactsScreen extends ConsumerWidget {
                       child: ListTile(
                         title: Text(
                           contact.displayName,
-                          style: const TextStyle(fontSize: 18),
-                        ),  
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                         leading: (contact.photo == null)
-                            ? null
+                            ? const CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('assets/images/avatar.png'),
+                                radius: 20,
+                              )
                             : CircleAvatar(
                                 backgroundImage: MemoryImage(contact.photo!),
-                                radius: 30,
+                                radius: 20,
                               ),
                       ),
                     ),

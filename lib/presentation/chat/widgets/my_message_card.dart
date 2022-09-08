@@ -26,7 +26,7 @@ class MyMessageCard extends StatelessWidget {
               8,
             ),
           ),
-          color: kMainThemeColor2,
+          color: myMessageColor,
           margin: const EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 5,

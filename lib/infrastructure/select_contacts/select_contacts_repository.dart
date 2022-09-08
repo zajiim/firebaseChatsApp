@@ -44,10 +44,11 @@ class SelectContactRepository {
             selectedContact.phones[0].number.replaceAll(' ', '');
         if (selectedPhoneNumber == userData.phoneNumber) {
           isFound = true;
-          Navigator.pushNamed(
-            context,
-            ChatScreen.routeName,
-          );
+          // ignore: use_build_context_synchronously
+          Navigator.pushNamed(context, ChatScreen.routeName, arguments: {
+            'name': userData.name,
+            'uid': userData.uid,
+          });
         }
       }
       if (!isFound) {

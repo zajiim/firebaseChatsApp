@@ -6,7 +6,6 @@ import 'package:chat_app_riverpod/infrastructure/common/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -62,7 +61,7 @@ class UserRepository {
         name: name,
         uid: uid,
         profilePic: photoUrl,
-        phoneNumber: auth.currentUser!.phoneNumber.toString(),
+        phoneNumber: auth.currentUser!.phoneNumber!,
         isOnline: true,
         groupId: [],
       );
@@ -76,5 +75,13 @@ class UserRepository {
     } catch (e) {
       showSnackBar(context: context, message: e.toString());
     }
+  }
+
+  Stream<UserModel> userData(String userId) {
+    return firestore.collection('users').doc(userId).snapshots().map(
+          (event) => UserModel.fromMap(
+            event.data()!,
+          ),
+        );
   }
 }

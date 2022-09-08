@@ -18,8 +18,11 @@ class ChatListWidget extends StatelessWidget {
         itemBuilder: ((context, index) {
           return InkWell(
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const ChatScreen()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const ChatScreen(
+                        name: 'RR',
+                        uid: '12345',
+                      )));
             },
             child: ListTile(
               title: Text(
