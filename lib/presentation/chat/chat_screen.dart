@@ -78,7 +78,7 @@ class ChatScreen extends ConsumerWidget {
             const Expanded(
               child: ChatMessagesList(),
             ),
-            BottomChatField(dimensions: dimensions),
+            BottomChatField(dimensions: dimensions, receiverUserId: uid,),
             // TextField(
             //   decoration: InputDecoration(
             //     filled: true,

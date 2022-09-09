@@ -1,14 +1,20 @@
-import 'package:chat_app_riverpod/core/constants.dart';
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import "package:flutter/material.dart";
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:chat_app_riverpod/application/chat/chat_controller.dart';
+import 'package:chat_app_riverpod/core/constants.dart';
 
 import '../../../core/colors.dart';
 
 ValueNotifier<bool> isTyping = ValueNotifier(false);
+final TextEditingController messageController = TextEditingController();
 
-class BottomChatField extends StatelessWidget {
+class BottomChatField extends ConsumerWidget {
+  final String receiverUserId;
   const BottomChatField({
     Key? key,
+    required this.receiverUserId,
     required this.dimensions,
   }) : super(key: key);
 
@@ -16,7 +22,18 @@ class BottomChatField extends StatelessWidget {
 
   // bool isTyping = false;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    void sendTextMessage() async {
+      if (isTyping.value) {
+        ref.read(chatControllerProvider).sendTextMessage(
+              context,
+              messageController.text.trim(),
+              receiverUserId,
+            );
+        messageController.text = '';
+      }
+    }
+
     return Row(
       children: [
         Expanded(
@@ -51,6 +68,7 @@ class BottomChatField extends StatelessWidget {
 
                   Expanded(
                       child: TextFormField(
+                    controller: messageController,
                     onChanged: (val) {
                       if (val.isNotEmpty) {
                         isTyping.value = true;
@@ -117,9 +135,12 @@ class BottomChatField extends StatelessWidget {
             child: ValueListenableBuilder(
                 valueListenable: isTyping,
                 builder: (context, _, __) {
-                  return Icon(
-                    (isTyping.value == true) ? Icons.send_rounded : Icons.mic,
-                    color: kWhite,
+                  return GestureDetector(
+                    onTap: sendTextMessage,
+                    child: Icon(
+                      (isTyping.value == true) ? Icons.send_rounded : Icons.mic,
+                      color: kWhite,
+                    ),
                   );
                 }),
           ),
