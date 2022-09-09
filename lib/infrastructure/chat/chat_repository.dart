@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:chat_app_riverpod/core/chat_data.dart';
 import 'package:chat_app_riverpod/core/message_enums.dart';
 import 'package:chat_app_riverpod/domain/chat/models/chat_contact.dart';
 import 'package:chat_app_riverpod/domain/chat/models/message.dart';
@@ -25,6 +26,37 @@ class ChatRepository {
     required this.firestore,
     required this.auth,
   });
+
+  Stream<List<ChatContact>> getChatContacts() {
+    return firestore
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .collection('chats')
+        .snapshots()
+        .asyncMap(
+      (event) async {
+        List<ChatContact> contacts = [];
+        for (var document in event.docs) {
+          var chatContact = ChatContact.fromMap(document.data());
+          var userData = await firestore
+              .collection('users')
+              .doc(chatContact.contactId)
+              .get();
+          var user = UserModel.fromMap(userData.data()!);
+          contacts.add(
+            ChatContact(
+              name: user.name,
+              profilePic: user.profilePic,
+              contactId: user.uid,
+              timeSent: chatContact.timeSent,
+              lastMessage: chatContact.lastMessage,
+            ),
+          );
+        }
+        return contacts;
+      },
+    );
+  }
 
   void _saveDataToContactsSubCollection(
     UserModel senderUserData,
