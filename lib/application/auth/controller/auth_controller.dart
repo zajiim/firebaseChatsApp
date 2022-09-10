@@ -35,4 +35,8 @@ class AuthController {
       verificationId: verificationId,
     );
   }
+
+  void setUserState(bool isOnline)  {
+    authRepository.setUserState(isOnline);
+  }
 }
