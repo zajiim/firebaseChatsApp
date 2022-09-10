@@ -4,15 +4,21 @@ import "package:flutter/material.dart";
 import '../../core/colors.dart';
 import 'widgets/chats_list_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double cameraWidth = screenWidth / 24;
     double defaultTabWidth = (screenWidth - cameraWidth) / 5;
     return DefaultTabController(
+      initialIndex: 1,
       length: 4,
       child: Scaffold(
         appBar: AppBar(

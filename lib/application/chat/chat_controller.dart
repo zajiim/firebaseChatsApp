@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:chat_app_riverpod/application/user/user_controller.dart';
 import 'package:chat_app_riverpod/domain/chat/models/chat_contact.dart';
+import 'package:chat_app_riverpod/domain/chat/models/message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,6 +25,9 @@ class ChatController {
 
   Stream<List<ChatContact>> chatContacts() {
     return chatRepository.getChatContacts();
+  }
+   Stream<List<Message>> chatMessageStream(String receiverUserId) {
+    return chatRepository.getChatStream(receiverUserId);
   }
 
   void sendTextMessage(

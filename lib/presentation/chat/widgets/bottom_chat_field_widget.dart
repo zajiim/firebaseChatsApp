@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chat_app_riverpod/application/chat/chat_controller.dart';
-import 'package:chat_app_riverpod/core/constants.dart';
 
 import '../../../core/colors.dart';
 

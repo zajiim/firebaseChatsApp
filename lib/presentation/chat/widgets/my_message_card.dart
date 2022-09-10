@@ -38,7 +38,7 @@ class MyMessageCard extends StatelessWidget {
                   top: 5,
                   right: 30,
                   bottom: 20,
-                  left: 10,
+                  left: 15,
                 ),
                 child: Text(
                   message,
@@ -48,27 +48,28 @@ class MyMessageCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  bottom: 4,
-                  right: 10,
-                  child: Row(
-                    children: [
-                      Text(
-                        date,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: kGreyColor,
-                        ),
+                bottom: 4,
+                right: 10,
+                child: Row(
+                  children: [
+                    Text(
+                      date,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: kGreyColor,
                       ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Icon(
-                        Icons.done_all,
-                        color: kBlueColor,
-                        size: 18,
-                      )
-                    ],
-                  )),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Icon(
+                      Icons.done_all,
+                      color: kSeenColor,
+                      size: 18,
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
