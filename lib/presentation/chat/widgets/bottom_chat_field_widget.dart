@@ -56,6 +56,13 @@ class BottomChatField extends ConsumerWidget {
       }
     }
 
+    void selectVideo() async {
+      File? video = await pickVideoFromGallery(context);
+      if (video != null) {
+        sendFileMessage(video, MessageEnum.video);
+      }
+    }
+
     return Row(
       children: [
         Expanded(
@@ -125,7 +132,7 @@ class BottomChatField extends ConsumerWidget {
                     ),
                   )),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: selectVideo,
                     icon: const Icon(
                       Icons.attach_file,
                       color: kGreyColor,

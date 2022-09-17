@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import "package:flutter/material.dart";
 
 import '../../../core/message_enums.dart';
+import 'video_player_item_widget.dart';
 
 class DisplayMessage extends StatelessWidget {
   final String message;
@@ -22,8 +23,12 @@ class DisplayMessage extends StatelessWidget {
               fontSize: 16,
             ),
           )
-        : CachedNetworkImage(
-            imageUrl: message,
-          );
+        : type == MessageEnum.video
+            ? VideoPlayerItemWidget(
+                videoUrl: message,
+              )
+            : CachedNetworkImage(
+                imageUrl: message,
+              );
   }
 }
