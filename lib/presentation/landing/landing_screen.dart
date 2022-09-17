@@ -15,7 +15,8 @@ class LandingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dimensions = MediaQuery.of(context).size;
     return Scaffold(
-       resizeToAvoidBottomInset: false,
+      backgroundColor: kWhite.withOpacity(0.8),
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,6 +27,7 @@ class LandingScreen extends StatelessWidget {
             const Text(
               'Welcome to Messenger',
               style: TextStyle(
+                color: kMainThemeColor2,
                 fontSize: 33,
                 fontWeight: FontWeight.w600,
               ),
@@ -35,6 +37,7 @@ class LandingScreen extends StatelessWidget {
             ),
             Image.asset(
               "assets/images/messengerBG.png",
+              color: kMainThemeColor,
               height: 340,
               width: 340,
             ),

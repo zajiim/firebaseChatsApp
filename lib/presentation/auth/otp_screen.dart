@@ -26,7 +26,7 @@ class OTPScreen extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: kMainThemeColor,
+        backgroundColor: kMainThemeColor2,
         elevation: 0,
         title: const Text(
           "Verifying your OTP",

@@ -1,8 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:io';
+
 import 'package:chat_app_riverpod/core/message_enums.dart';
 import 'package:chat_app_riverpod/domain/chat/models/chat_contact.dart';
 import 'package:chat_app_riverpod/domain/chat/models/message.dart';
+import 'package:chat_app_riverpod/infrastructure/common/repositories/common_firebase_repo_storage.dart';
 import 'package:chat_app_riverpod/infrastructure/common/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -185,6 +188,69 @@ class ChatRepository {
         senderUserName: senderUser.name,
         receiverUserName: receiverUserData.name,
         messageType: MessageEnum.text,
+      );
+    } catch (e) {
+      showSnackBar(context: context, message: e.toString());
+    }
+  }
+
+  void sendFileMessage({
+    required BuildContext context,
+    required File file,
+    required String receiverUserId,
+    required UserModel senderUserData,
+    required ProviderRef ref,
+    required MessageEnum messageEnum,
+  }) async {
+    try {
+      DateTime timeSent = DateTime.now();
+      var messageId = const Uuid().v1();
+      String imageUrl =
+          await ref.read(commonFirebaseStorageRepoProvider).storeFileToFirebase(
+                'chat/${messageEnum.type}/${senderUserData.uid}/$receiverUserId/$messageId',
+                file,
+              );
+      UserModel receiverUserData;
+      var userDataMap =
+          await firestore.collection('users').doc(receiverUserId).get();
+      receiverUserData = UserModel.fromMap(userDataMap.data()!);
+
+      String contactMessage;
+      switch (messageEnum) {
+        case MessageEnum.image:
+          contactMessage = "📸 Photo";
+
+          break;
+        case MessageEnum.video:
+          contactMessage = "🎬 Video";
+
+          break;
+        case MessageEnum.audio:
+          contactMessage = "🎶 Audio";
+
+          break;
+        case MessageEnum.gif:
+          contactMessage = "GIF";
+
+          break;
+        default:
+          contactMessage = "GIF";
+      }
+      _saveDataToContactsSubCollection(
+        senderUserData,
+        receiverUserData,
+        contactMessage,
+        timeSent,
+        receiverUserId,
+      );
+      _saveMessagesToMessageSubCollection(
+        receiverUserId: receiverUserId,
+        text: imageUrl,
+        timeSent: timeSent,
+        messageId: messageId,
+        senderUserName: senderUserData.name,
+        receiverUserName: receiverUserData.name,
+        messageType: messageEnum,
       );
     } catch (e) {
       showSnackBar(context: context, message: e.toString());

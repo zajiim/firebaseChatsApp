@@ -1,5 +1,5 @@
 import 'package:chat_app_riverpod/application/chat/chat_controller.dart';
-import 'package:chat_app_riverpod/core/chat_data.dart';
+
 import 'package:chat_app_riverpod/domain/chat/models/chat_contact.dart';
 import 'package:chat_app_riverpod/presentation/chat/chat_screen.dart';
 import 'package:chat_app_riverpod/presentation/common/widgets/loader_widget.dart';

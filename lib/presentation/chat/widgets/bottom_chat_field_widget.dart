@@ -1,4 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
+import 'package:chat_app_riverpod/core/message_enums.dart';
+import 'package:chat_app_riverpod/infrastructure/common/utils.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,6 +34,25 @@ class BottomChatField extends ConsumerWidget {
               receiverUserId,
             );
         messageController.text = '';
+      }
+    }
+
+    void sendFileMessage(
+      File file,
+      MessageEnum messageEnum,
+    ) {
+      ref.read(chatControllerProvider).sendFileMessage(
+            context,
+            file,
+            receiverUserId,
+            messageEnum,
+          );
+    }
+
+    void selectImage() async {
+      File? image = await pickImageFromGallery(context);
+      if (image != null) {
+        sendFileMessage(image, MessageEnum.image);
       }
     }
 
@@ -111,7 +134,7 @@ class BottomChatField extends ConsumerWidget {
 
                   //
                   IconButton(
-                    onPressed: () {},
+                    onPressed: selectImage,
                     icon: const Icon(
                       Icons.camera_alt,
                       color: kGreyColor,

@@ -55,11 +55,13 @@ class _ChatMessagesListState extends ConsumerState<ChatMessagesList> {
                 return MyMessageCard(
                   date: timeSent,
                   message: messageData.text,
+                  type: messageData.type,
                 );
               } else {
                 return OtherMessageCard(
                   date: timeSent,
                   message: messageData.text,
+                  type: messageData.type,
                 );
               }
             },

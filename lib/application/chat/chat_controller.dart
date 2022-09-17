@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 import 'package:chat_app_riverpod/application/user/user_controller.dart';
+import 'package:chat_app_riverpod/core/message_enums.dart';
 import 'package:chat_app_riverpod/domain/chat/models/chat_contact.dart';
 import 'package:chat_app_riverpod/domain/chat/models/message.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,7 +29,8 @@ class ChatController {
   Stream<List<ChatContact>> chatContacts() {
     return chatRepository.getChatContacts();
   }
-   Stream<List<Message>> chatMessageStream(String receiverUserId) {
+
+  Stream<List<Message>> chatMessageStream(String receiverUserId) {
     return chatRepository.getChatStream(receiverUserId);
   }
 
@@ -41,6 +45,24 @@ class ChatController {
             text: text,
             receiverUserId: receiverUserId,
             senderUser: value!,
+          ),
+        );
+  }
+
+  void sendFileMessage(
+    BuildContext context,
+    File file,
+    String receiverUserId,
+    MessageEnum messageEnum,
+  ) async {
+    ref.read(userDataAuthProvider).whenData(
+          (value) => chatRepository.sendFileMessage(
+            context: context,
+            file: file,
+            receiverUserId: receiverUserId,
+            senderUserData: value!,
+            ref: ref,
+            messageEnum: messageEnum,
           ),
         );
   }

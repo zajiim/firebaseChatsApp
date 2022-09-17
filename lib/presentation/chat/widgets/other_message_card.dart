@@ -1,13 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import "package:flutter/material.dart";
+
 import 'package:chat_app_riverpod/core/colors.dart';
+
+import '../../../core/message_enums.dart';
+import 'display_message.dart';
 
 class OtherMessageCard extends StatelessWidget {
   final String message;
   final String date;
+  final MessageEnum type;
   const OtherMessageCard({
     Key? key,
     required this.message,
     required this.date,
+    required this.type,
   }) : super(key: key);
 
   @override
@@ -17,6 +24,7 @@ class OtherMessageCard extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: ConstrainedBox(
         constraints: BoxConstraints(
+          minWidth: 100,
           maxWidth: dimensions.width - 45,
         ),
         child: Card(
@@ -34,17 +42,22 @@ class OtherMessageCard extends StatelessWidget {
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                  top: 5,
-                  right: 30,
-                  bottom: 20,
-                  left: 10,
-                ),
-                child: Text(
-                  message,
-                  style: const TextStyle(
-                    fontSize: 15,
-                  ),
+                padding: (type == MessageEnum.text)
+                    ? const EdgeInsets.only(
+                        top: 5,
+                        right: 30,
+                        bottom: 20,
+                        left: 15,
+                      )
+                    : const EdgeInsets.only(
+                        top: 5,
+                        left: 5,
+                        right: 5,
+                        bottom: 25,
+                      ),
+                child: DisplayMessage(
+                  message: message,
+                  type: type,
                 ),
               ),
               Positioned(

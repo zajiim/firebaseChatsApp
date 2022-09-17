@@ -1,5 +1,3 @@
-
-
 import 'package:chat_app_riverpod/application/auth/controller/auth_controller.dart';
 import 'package:chat_app_riverpod/core/colors.dart';
 import 'package:chat_app_riverpod/core/constants.dart';
@@ -61,7 +59,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       appBar: AppBar(
         title: const Text("Enter your phone number"),
         elevation: 0,
-        backgroundColor: kMainThemeColor,
+        backgroundColor: kMainThemeColor2,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
